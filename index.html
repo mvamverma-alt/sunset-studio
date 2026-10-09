@@ -5,467 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fartstinker</title>
   <style>
-    :root {
-      --bg: #0f172a;
-      --bg-soft: #111827;
-      --panel: #1f2937;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #f59e0b;
-      --accent-2: #f97316;
-      --white: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.2);
-    }
-
     * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0b1120 0%, #111827 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(1100px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    nav {
+      background: linear-gradient(180deg, #0a0f1f, #111827 60%, #0f172a);
+      color: #f5f5f5;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      min-height: 72px;
+      justify-content: center;
     }
-
-    .brand {
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-size: 1.2rem;
+    .center-wrap {
+      text-align: center;
+      padding: 32px 24px;
+      width: min(900px, 90vw);
     }
-
-    .brand span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover { color: var(--white); }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: 0.2s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fff;
-      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
-    }
-
-    .btn-primary:hover { transform: translateY(-1px); }
-
-    .hero { padding: 90px 0 70px; }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 18px;
-      font-weight: 700;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 1.08;
-      margin: 0 0 18px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 600px;
-    }
-
-    .hero-actions {
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .secondary-link {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .hero-card {
-      background: linear-gradient(160deg, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.18), transparent 40%);
-      pointer-events: none;
-    }
-
-    .mini-window {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .topbar {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .dot.red { background: #f87171; }
-    .dot.yellow { background: #fbbf24; }
-    .dot.green { background: #34d399; }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .stat {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 16px;
-      padding: 18px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.8rem;
-      margin-bottom: 6px;
-    }
-
-    section { padding: 40px 0; }
-
-    .section-head { margin-bottom: 28px; }
-
-    .section-head h2 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    .section-head p {
+    .poop {
+      font-size: clamp(8rem, 28vw, 28rem);
+      line-height: 1;
       margin: 0;
-      color: var(--muted);
+      display: block;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,0.5));
+      animation: bounce 1.5s ease-in-out infinite;
     }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(2rem, 5vw, 5rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-
-    .card {
-      background: rgba(17, 24, 39, 0.9);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
+    p {
+      margin: 0;
+      color: #d1d5db;
+      font-size: clamp(1rem, 2vw, 1.4rem);
     }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(249,115,22,0.1));
-      color: var(--accent);
-      margin-bottom: 18px;
-      font-size: 1.2rem;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.3rem;
-    }
-
-    .card p { margin: 0; color: var(--muted); }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .about-box {
-      background: rgba(17, 24, 39, 0.9);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 30px;
-    }
-
-    .about-box ul {
-      list-style: none;
-      padding: 0;
-      margin: 22px 0 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .about-box li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--muted);
-    }
-
-    .check {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(52, 211, 153, 0.16);
-      color: #34d399;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-
-    .cta {
-      text-align: center;
-      padding: 60px 0 80px;
-    }
-
-    .cta-box {
-      background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(249,115,22,0.05));
-      border: 1px solid rgba(245,158,11,0.2);
-      border-radius: 28px;
-      padding: 42px 24px;
-    }
-
-    .cta-box h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 4vw, 3rem);
-    }
-
-    .cta-box p {
-      color: var(--muted);
-      margin: 0 auto 24px;
-      max-width: 620px;
-    }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 24px 0 40px;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    @media (max-width: 820px) {
-      .hero-grid, .about, .features {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links { display: none; }
-      .hero { padding-top: 60px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a href="#" class="brand">Fart<span>stinker</span></a>
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <a href="#contact" class="btn btn-primary">Get Started</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Welcome to Fartstinker</div>
-          <h1>The Internet's Most Hilarious Community</h1>
-          <p>
-            Join millions of people sharing the funniest, most ridiculous content on the web.
-            From memes to viral moments, Fartstinker is where humor lives.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#features" class="btn btn-primary">Join Us</a>
-            <a href="#about" class="secondary-link">Learn more</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="mini-window">
-            <div class="topbar">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
-            </div>
-
-            <div style="font-size: 0.8rem; color: var(--muted); margin-bottom: 10px;">Community Stats</div>
-            <div style="font-size: 2.1rem; font-weight: 700;">10.5M</div>
-            <div style="color: #34d399; font-weight: 600;">Active Members</div>
-
-            <div class="stat-grid">
-              <div class="stat">
-                <strong>2.3B</strong>
-                <span>Laughs per day</span>
-              </div>
-              <div class="stat">
-                <strong>100%</strong>
-                <span>Pure fun</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="features">
-      <div class="container">
-        <div class="section-head">
-          <h2>Why You'll Love It</h2>
-          <p>Everything you need for endless entertainment.</p>
-        </div>
-
-        <div class="features">
-          <article class="card">
-            <div class="icon">😂</div>
-            <h3>Endless Memes</h3>
-            <p>Fresh, hilarious memes uploaded every second. Never run out of laughs.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🎬</div>
-            <h3>Viral Videos</h3>
-            <p>The funniest clips, pranks, and fail compilations all in one place.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">👥</div>
-            <h3>Community</h3>
-            <p>Connect with millions of funny people who share your sense of humor.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container about">
-        <div class="about-box">
-          <div class="section-head" style="margin-bottom: 0;">
-            <h2>About Fartstinker</h2>
-          </div>
-          <ul>
-            <li><span class="check">✓</span> Founded in 2020</li>
-            <li><span class="check">✓</span> 100% free to use</li>
-            <li><span class="check">✓</span> No ads. No BS.</li>
-            <li><span class="check">✓</span> Pure comedy gold</li>
-          </ul>
-        </div>
-
-        <div class="about-box">
-          <p style="color: var(--muted); font-size: 1.08rem;">
-            Fartstinker started as a joke but became something real. We're a platform dedicated to 
-            bringing joy, laughter, and ridiculous content to people everywhere. Life's too short 
-            not to laugh at the silly stuff.
-          </p>
-          <div style="margin-top: 24px; display: flex; gap: 20px; flex-wrap: wrap;">
-            <div>
-              <div style="font-size: 2rem; font-weight: 700;">6+</div>
-              <div style="color: var(--muted);">Years running</div>
-            </div>
-            <div>
-              <div style="font-size: 2rem; font-weight: 700;">1B+</div>
-              <div style="color: var(--muted);">Posts shared</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="cta">
-      <div class="container">
-        <div class="cta-box">
-          <h2>Ready to laugh your butt off?</h2>
-          <p>
-            Join Fartstinker today and never miss out on the funniest content on the internet.
-          </p>
-          <a href="mailto:hello@fartstinker.com" class="btn btn-primary">hello@fartstinker.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> Fartstinker. All rights reserved. Brought to you by people with terrible taste.
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <div class="center-wrap">
+    <div class="poop" aria-label="poop emoji">💩</div>
+    <h1>Fartstinker</h1>
+    <p>The biggest poop-powered website on the internet.</p>
+  </div>
 </body>
 </html>
